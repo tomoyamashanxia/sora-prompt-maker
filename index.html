@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <title>Sora Prompt Maker ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-glow"></div>
+      <h1 class="app-title">🎬 Sora Prompt Maker</h1>
+      <p class="app-subtitle">ボタンを押してプロンプトを自動生成！</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Generate All Button -->
+      <button id="btnGenerateAll" class="btn-generate-all" onclick="generateAll()">
+        <span class="btn-icon">🎲</span>
+        <span class="btn-text">すべてランダム生成</span>
+        <span class="btn-sparkle">✨</span>
+      </button>
+
+      <!-- Section 1: Cameo + Name (linked) -->
+      <div class="card card-cameo">
+        <div class="card-header">
+          <span class="card-number">①③</span>
+          <span class="card-label">Cameo & 名前</span>
+          <button class="btn-dice" onclick="randomizeCameo()">🎲</button>
+        </div>
+        <div class="card-body">
+          <div class="selected-value" id="cameoDisplay">
+            <span class="value-label">Cameo:</span>
+            <span class="value-text" id="cameoId">タップして選択</span>
+          </div>
+          <div class="selected-value linked">
+            <span class="value-label">名前:</span>
+            <span class="value-text" id="cameoName">—</span>
+            <span class="link-badge">🔗 連動</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Outfit -->
+      <div class="card card-outfit">
+        <div class="card-header">
+          <span class="card-number">②</span>
+          <span class="card-label">衣装</span>
+          <button class="btn-dice" onclick="randomizeOutfit()">🎲</button>
+        </div>
+        <div class="card-body">
+          <div class="outfit-buttons">
+            <button class="outfit-btn" id="outfitA" onclick="selectOutfit('A')">
+              <span class="outfit-emoji">👕</span>
+              <span class="outfit-name">A: タンクトップ＋デニム</span>
+            </button>
+            <button class="outfit-btn" id="outfitB" onclick="selectOutfit('B')">
+              <span class="outfit-emoji">👔</span>
+              <span class="outfit-name">B: スーツ＋ショーツ</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: English Word -->
+      <div class="card card-word">
+        <div class="card-header">
+          <span class="card-number">④</span>
+          <span class="card-label">英単語</span>
+          <button class="btn-dice" onclick="randomizeWord()">🎲</button>
+        </div>
+        <div class="card-body">
+          <div class="word-display" id="wordDisplay">
+            <div class="word-en" id="wordEn">word</div>
+            <div class="word-kana" id="wordKana">ワード</div>
+            <div class="word-ja" id="wordJa">日本語訳</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prompt Preview -->
+      <div class="card card-preview">
+        <div class="card-header">
+          <span class="card-number">📝</span>
+          <span class="card-label">生成プロンプト</span>
+        </div>
+        <div class="card-body">
+          <div class="prompt-preview" id="promptPreview">
+            ↑ 上のボタンで各項目を選択してください
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy Button -->
+      <button id="btnCopy" class="btn-copy" onclick="copyPrompt()">
+        <span class="btn-icon">📋</span>
+        <span class="btn-text">プロンプトをコピー</span>
+      </button>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">コピーしました！ ✅</div>
+  </div>
+
+  <script src="cameos.js"></script>
+  <script src="words.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
